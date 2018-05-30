@@ -5,13 +5,12 @@ var mainList = {
 	money,
 	nameShop,
 	shopGoods: [],
+	employers: {},
+	open: false
 };
-console.log(mainList);
 
+ mainList.shopGoods[0] = prompt("Какой тип товаров будем продавать?");
+ mainList.shopGoods[1] = prompt("Какой тип товаров будем продавать?");
+ mainList.shopGoods[2] = prompt("Какой тип товаров будем продавать?");
 
-var shopGoods = prompt("Какой тип товаров будем продавать?");
-var shopGoods = prompt("Какой тип товаров будем продавать?");
-var shopGoods = prompt("Какой тип товаров будем продавать?");
-
-console.log(mainList);
-
+alert("Ваш бюджет на 1 день: " + (money / 30));
