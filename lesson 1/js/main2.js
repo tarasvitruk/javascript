@@ -1,19 +1,8 @@
-var money = prompt("Ваш бюджет на месяц?");
-var name = prompt("Название вашего магазина?");
-
-var mainList = {
-	budget: money,
-	shpName: name,
-	shopGoods: [],
-	employers: {},
-	open: false
-};
-
-for (let i = 0; i < 5; i++) {
-	let a = prompt("Какой тип товаров будем продавать?");
-	mainList.shopGoods[i] = a;
-}
-
-alert("Ваш бюджет на 1 день: " + (mainList.budget / 30));
-
-console.log(mainList);
+let num = "33721";
+		num = num.charAt(0)*num.charAt(1)*num.charAt(2)*num.charAt(3)*num.charAt(4);
+		console.log(num);
+let num3 = num**3;
+		
+		num3 = String(num3);
+let firstTwo = num3.charAt(0) + num3.charAt(1);
+alert(firstTwo);

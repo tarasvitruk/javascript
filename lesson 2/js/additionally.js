@@ -1,19 +1,10 @@
-var money = prompt("Ваш бюджет на месяц?");
-var name = prompt("Название вашего магазина?");
+let week = ['Понедельник', '<br>Вторник', '<br>Среда', '<br>Четверг'.italics(), '<br>Пятница', '<br>Суббота'.bold(), '<br>Воскресенье'.bold()];
+document.write(week);
 
-var mainList = {
-	budget: money,
-	shpName: name,
-	shopGoods: [],
-	employers: {},
-	open: false
-};
 
-for (let i = 0; i < 5; i++) {
-	let a = prompt("Какой тип товаров будем продавать?");
-	mainList.shopGoods[i] = a;
+let arr = ['316', '198', '777', '490', '511', '374', '200'];
+for (var i = 0; i < arr.length; i++) {
+	if (arr[i][0] == 3 || arr[i][0] == 7) {
+		console.log(arr[i]);
+	}
 }
-
-alert("Ваш бюджет на 1 день: " + (mainList.budget / 30));
-
-console.log(mainList);
