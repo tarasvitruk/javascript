@@ -12,7 +12,6 @@ let mainList = {
 
 /* 1 способ */
 for (let i = 0; i < 5; i++) {
-	
 	let a = prompt("Какой тип товаров будем продавать?");
 	if((typeof(a)) === 'string' && (typeof(a)) != null && a != '' && a.length < 50 ) {
 		console.log('Все верно!');
@@ -25,7 +24,6 @@ for (let i = 0; i < 5; i++) {
 /* 2 способ */
 // let i = 0;
 // while (i < 5) {
-// 	i++;
 // 	let a = prompt("Какой тип товаров будем продавать?");
 // 	if((typeof(a)) === 'string' && (typeof(a)) != null && a != '' && a.length < 50 ) {
 // 		console.log('Все верно!');
@@ -33,12 +31,12 @@ for (let i = 0; i < 5; i++) {
 // 	} else {
 // 			--i;
 // 	}
+// 	i++;
 // }
 
 /* 3 способ */
 // let i = 0;
 // do {
-// 	i++;
 // 	let a = prompt("Какой тип товаров будем продавать?");
 // 	if((typeof(a)) === 'string' && (typeof(a)) != null && a != '' && a.length < 50 ) {
 // 		console.log('Все верно!');
@@ -46,6 +44,7 @@ for (let i = 0; i < 5; i++) {
 // 	} else {
 // 			--i;
 // 	}
+// 	i++;
 // } while (i < 5);
 
 

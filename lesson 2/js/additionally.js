@@ -1,5 +1,16 @@
-let week = ['Понедельник', '<br>Вторник', '<br>Среда', '<br>Четверг'.italics(), '<br>Пятница', '<br>Суббота'.bold(), '<br>Воскресенье'.bold()];
-document.write(week.join(''));
+let week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+for (var i = 0; i < week.length; i++) {
+	if (i > 4) {
+			document.write(week[i].bold() + '<br />' );
+	  }
+	else if (i == 3) {
+			document.write(week[i].italics() + '<br />' );
+	  }
+	else {
+		document.write(week[i] + '<br />');
+	}
+} 
+
 
 
 let arr = ['316', '198', '777', '490', '511', '374', '200'];
