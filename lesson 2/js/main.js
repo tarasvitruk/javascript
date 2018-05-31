@@ -59,7 +59,7 @@ if (time < 0) {
 						console.log('В сутках только 24 часа!');
 						}
 
-// switch (time) {
+// switch (true) {
 // 	case (time < 0):
 // 		console.log('Такого просто не может быть');
 // 		break;
