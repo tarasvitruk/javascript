@@ -1,5 +1,5 @@
 let week = ['Понедельник', '<br>Вторник', '<br>Среда', '<br>Четверг'.italics(), '<br>Пятница', '<br>Суббота'.bold(), '<br>Воскресенье'.bold()];
-document.write(week);
+document.write(week.join(''));
 
 
 let arr = ['316', '198', '777', '490', '511', '374', '200'];
