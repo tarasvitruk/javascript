@@ -16,12 +16,3 @@ for (let i = 0; i < 6; i++) {
 		}
 }
 console.log(Math.sqrt(cubeSum));
-
-
-
-// function lesson(str) {
-// 	if (!str) return str;
-
-// 	return str[0].toUpperCase() + str.slice(1);
-// }
-// alert(newStr);
