@@ -1,7 +1,7 @@
 let money,
 		name,
 		time,
-		price
+		price;
 
 function start() {
 	money = prompt("Ваш бюджет на месяц?");

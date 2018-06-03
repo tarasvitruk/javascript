@@ -16,3 +16,14 @@ for (let i = 0; i < 6; i++) {
 		}
 }
 console.log(Math.sqrt(cubeSum));
+
+function argument() {
+	let arg = prompt('Введите аргумент.');
+	if((typeof(arg)) === 'string') {
+		
+	} else {
+		alert('Вы не ввели строку!')
+	}
+	console.log(arg);
+}
+argument();
