@@ -19,7 +19,8 @@ console.log(Math.sqrt(cubeSum));
 
 
 
-let arg;
+let arg,
+		newArg;
 function argument(callback) {
 	arg = prompt('Введите аргумент.');
 	
@@ -28,22 +29,21 @@ function argument(callback) {
 	} else {
 		alert('Вы не ввели строку!');
 	}
-	console.log(arg);
 	callback();
 };
-let newArg = arg;
 argument(symbol);
 
 
 function symbol() {
 	if(arg.length > 50) {
-		arg.slice(0, 50); + ' ...';
-		console.log(arg);
+		newArg = arg.slice(0, 50); + ' ...';
+		console.log(newArg + ' ...');
 	} else {
 		alert('Ввели <50 символов');
+		console.log(arg);
 	}
 };
-console.log(arg);
+
 
 
 
