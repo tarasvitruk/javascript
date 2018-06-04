@@ -73,11 +73,12 @@ let mainList = {
 								},
 	chooseShopItems:  function chooseShopItems() {
 											let items = prompt('Перечислите через запятую товары.', '');
-											if((typeof(items)) === 'string' && items != '' && (typeof(items)) != null) {
-												mainList.shopItems = items.split(',');
-												mainList.shopItems.push(prompt('Может что то забыли?', ''));
-												mainList.shopItems.sort();
+											while(!isNaN(items) || items === '' || items === null) {
+												items = prompt('Перечислите через запятую товары.', '');
 											}
+											mainList.shopItems = items.split(',');
+											mainList.shopItems.push(prompt('Может что то забыли?', ''));
+											mainList.shopItems.sort();
 										},
 	shopItemsAlert: function shopItemsAlert() {
 										mainList.shopItems.forEach(function(item, i, shopItems) {
@@ -102,5 +103,7 @@ mainList.chooseGoods();
 mainList.workTime();
 
 mainList.moneyBudget();
+
+mainList.chooseShopItems();
 
 console.log(mainList);
