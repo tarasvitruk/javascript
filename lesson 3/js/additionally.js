@@ -17,13 +17,36 @@ for (let i = 0; i < 6; i++) {
 }
 console.log(Math.sqrt(cubeSum));
 
-function argument() {
-	let arg = prompt('Введите аргумент.');
+
+
+let arg;
+function argument(callback) {
+	arg = prompt('Введите аргумент.');
+	
 	if((typeof(arg)) === 'string') {
-		
+		arg = arg.trim();
 	} else {
-		alert('Вы не ввели строку!')
+		alert('Вы не ввели строку!');
 	}
 	console.log(arg);
-}
-argument();
+	callback();
+};
+let newArg = arg;
+argument(symbol);
+
+
+function symbol() {
+	if(arg.length > 50) {
+		arg.slice(0, 50); + ' ...';
+		console.log(arg);
+	} else {
+		alert('Ввели <50 символов');
+	}
+};
+console.log(arg);
+
+
+
+
+
+
