@@ -14,7 +14,7 @@ function start() {
 	
 };
 time = 19;
-// start();
+start();
 
 let mainList = {
 	budget: money,
@@ -93,14 +93,14 @@ let mainList = {
 
 };
 
-// hiringEmployers();
+mainList.hiringEmployers();
 
-// discountSystem();
+mainList.discountSystem();
 
-// chooseGoods();
+mainList.chooseGoods();
 
-// workTime();
+mainList.workTime();
 
-// moneyBudget();
+mainList.moneyBudget();
 
 console.log(mainList);
