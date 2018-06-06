@@ -1,11 +1,11 @@
 let btn = document.getElementById('open-btn'),
-		inputs = document.getElementsByClassName('main-info'),
-		budget = document.getElementsByClassName('budget'),
-		goods = document.getElementsByClassName('goods'),
-		items = document.getElementsByClassName('items'),
-		employers = document.getElementsByClassName('employers'),
-		discount = document.getElementsByClassName('discount'),
-		isopen = document.getElementsByClassName('isopen'),
+		name = document.getElementsByClassName('name-value'),
+		budget = document.getElementsByClassName('budget-value'),
+		goods = document.getElementsByClassName('goods-value'),
+		items = document.getElementsByClassName('items-value'),
+		employers = document.getElementsByClassName('employers-value'),
+		discount = document.getElementsByClassName('discount-value'),
+		isopen = document.getElementsByClassName('isopen-value'),
 
 		goodsItem = document.getElementsByClassName('goods-item'),
 
