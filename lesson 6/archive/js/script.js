@@ -1,5 +1,4 @@
 let ul = document.getElementsByTagName('ul');
-let div = document.getElementsByTagName('div');
 let li = document.createElement('li');
 let menuItem = document.getElementsByClassName('menu-item');
 li.innerHTML = 'Пятый пункт';
@@ -12,9 +11,9 @@ console.log(ul);
 
 title.innerHTML = 'Мы продаем только подлинную технику Apple';
 
-// let column = document.querySelectorAll('.column');
-let adv = document.getElementsByClassName('adv');
-adv[0].parentNode.removeChild(adv[0]);
+let column = document.querySelectorAll('.column');
+let adv = document.querySelector('.adv');
+column[1].removeChild(adv);
 
 let question = document.querySelector('.prompt');
 question.textContent = prompt('Ваше отношение к технике apple?');

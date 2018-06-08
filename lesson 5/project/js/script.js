@@ -1,4 +1,5 @@
 let btn = document.getElementById('open-btn'),
+
 		name = document.getElementsByClassName('name-value'),
 		budget = document.getElementsByClassName('budget-value'),
 		goods = document.getElementsByClassName('goods-value'),

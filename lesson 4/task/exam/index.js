@@ -33,7 +33,7 @@ function getSum(arr) {
 	}
 	return sum;
 }
-
+getFriendlyNumbers(220, 284);
 
 module.exports = {
     firstName: 'Taras',
