@@ -1,45 +1,62 @@
 function getFriendlyNumbers(start, end) {
-	let sum1 = getDivisorsSum(start);
-	let sum2 = getDivisorsSum(end);
-
-	if(sum1 == end && sum2 == start) {
-    return true;
-	} else {
+	let friendlyNumbersArr = [1, 500];
+	console.log('hello');
+	if (typeof(start) == 'string' || typeof(end) == 'string' || isNaN(start) || isNaN(end) || start > end || start < 0 || start/Math.floor(start) != 1 || end/Math.floor(start) != 1 ) {
 		return false;
-	}
-	return []
-}
-alert(getFriendlyNumbers(220, 284));
-function getDivisorsSum(num) {
-	return getSum(getDivisors(num));
-}
+	}; 
 
-
-function getDivisors(num) {
-	let arr = [];
-	for(let i = 1; i < num; i++) {
-		if(num % i == 0) {
-			arr.push(i);
+	for (let i = start; i < end; i++) {
+		for (let j = i + 1; j <= end; j++) {
+			if (friendly(i, j)) {
+				friendlyNumbersArr.push([i, j]);
+			}
 		}
 	}
-	return arr;
-}
+	return friendlyNumbersArr;
+};
 
 
-function getSum(arr) {
+function sumNum(n) {
 	let sum = 0;
-	for(let i = 0; i < arr.length; i++) {
-		sum += arr[i];
+	for(let i = 1; i < n; i++) {
+		if (n % i == 0) {
+			sum += i;
+		}
 	}
 	return sum;
-}
-getFriendlyNumbers(220, 284);
+};
+
+function sumNum2(m) {
+	let sum = 0;
+	for(let i = 1; i < m; i++) {
+		if (m % i == 0) {
+			sum += i;
+		}
+	}
+	return sum;
+};
+
+
+function friendly(n, m) {
+	if (sumNum(n) == m && sumNum2(m) == n) {
+		return true;
+	}
+	return false;
+};
 
 module.exports = {
     firstName: 'Taras',
     secondName: 'Vitruk',
     task: getFriendlyNumbers
 }
+
+
+
+
+
+
+
+
 
 
 
