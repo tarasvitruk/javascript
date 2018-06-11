@@ -18,7 +18,9 @@ getFriendlyNumbers(1, 300);
 
 
 function FrendlyNamber(i, j) {
-    if (getDivisorsSum(i) == j && getDivisorsSum(j) == i) { return true; } 
+    if (getDivisorsSum(i) == j && getDivisorsSum(j) == i) { 
+    	return true; 
+    } 
 }
 
 function SumOfTheArray(arr) { 
