@@ -18,10 +18,7 @@ document.write(date.toLocaleString('ru', {weekday: 'long'}));
 
 
 
-/*Четвертое задание*/ 
 
-let date1Date = [];
-let date2Date = [];
 
 function days() {
 	let date1 = document.getElementById('date1'),
