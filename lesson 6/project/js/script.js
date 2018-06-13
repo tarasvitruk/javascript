@@ -55,11 +55,11 @@ open.addEventListener('click', () => {
 	for(let i = 0; i < goods_item.length; i++){
 		goods_item[i].addEventListener('change', () =>{
 
-if (goods_item.value != '') {
-	goods_btn.disabled = 0;
-	} else {
-		goods_btn.disabled = 1;
-		}
+		if (goods_item.value != '') {
+			goods_btn.disabled = 0;
+			} else {
+				goods_btn.disabled = 1;
+				}
 	
 	})
 

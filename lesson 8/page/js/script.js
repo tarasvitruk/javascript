@@ -60,15 +60,15 @@ window.addEventListener('DOMContentLoaded', function() {
 		function updateClock() {
 			let t = getTimeRemaining(endtime);
 			if (t.hours < 10) {
-				hours.innerHTML = '0' + t.hours
+				hours.innerHTML = '0' + t.hours;
 			} else hours.innerHTML = t.hours;
 
 			if (t.minutes < 10) {
-				minutes.innerHTML = '0' + t.minutes
+				minutes.innerHTML = '0' + t.minutes;
 			} else minutes.innerHTML = t.minutes;
 
 			if (t.seconds < 10) {
-				seconds.innerHTML = '0' + t.seconds
+				seconds.innerHTML = '0' + t.seconds;
 			} else seconds.innerHTML = t.seconds;
 			
 			let timeInterval = setInterval(updateClock, 1000);
@@ -77,11 +77,11 @@ window.addEventListener('DOMContentLoaded', function() {
 				hours.innerHTML = '00';
 				minutes.innerHTML = '00';
 				seconds.innerHTML = '00';
-			};
-		};
+			}
+		}
 		updateClock();
 		
-	};
+	}
 	setClock('timer', deadline);
 });
 
