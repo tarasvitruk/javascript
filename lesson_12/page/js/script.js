@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			tabContent[i].classList.add('hide');
 		}
 	}
-	hideTabContent(1)
+	hideTabContent(1);
 
 	function showTabContent(b) {
 		if (tabContent[b].classList.contains('hide')) {
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			'minutes': minutes,
 			'seconds': seconds
 		};
-	};
+	}
 
 	function setClock(id, endtime) {
 		let timer = document.getElementById(id),
@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', function() {
 					statusMessage.innerHTML = message.failure;
 				}
 			}
-		}
+		};
 		for (let i = 0; i < input.length; i++) {
 			input[i].value = '';
 			// Очищаем поля ввода
@@ -213,10 +213,10 @@ window.addEventListener('DOMContentLoaded', function() {
 	function showSlides(n) {
 		if (n > slides.length) {
 			slideIndex = 1;
-		};
+		}
 		if (n < 1) {
 			slideIndex = slides.length;
-		};
+		}
 
 		for (let i = 0; i < slides.length; i++) {
 			slides[i].style.display = 'none';
@@ -224,18 +224,18 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		for (let i = 0; i < dots.length; i++) {
 			dots[i].classList.remove('dot-active');
-		};
+		}
 
 		slides[slideIndex - 1].style.display = 'block';
 		dots[slideIndex - 1].classList.add('dot-active');
 	}
 
 	function plusSlides(n) {
-		showSlides(slideIndex += n)
+		showSlides(slideIndex += n);
 	}
 
 	function currentSlide(n) {
-		showSlides(slideIndex = n)
+		showSlides(slideIndex = n);
 	}
 
 	prev.addEventListener('click', function(){
@@ -277,8 +277,8 @@ window.addEventListener('DOMContentLoaded', function() {
 		});
 
 		persons.onkeyup = function (input){
-        return this.value = this.value.replace(/[^\d]/g, '');;
-    }
+        return this.value = this.value.replace(/[^\d]/g, '');
+    };
 
 		restDays.addEventListener('change', function() {
 			daysSum = +this.value;
@@ -291,8 +291,8 @@ window.addEventListener('DOMContentLoaded', function() {
 		});
 
 		restDays.onkeyup = function (input){
-		        return this.value = this.value.replace(/[^\d]/g, '');;
-		    }
+		        return this.value = this.value.replace(/[^\d]/g, '');
+		    };
 
 		place.addEventListener('change', function() {
 			if (restDays.value == '' || persons.value == '') {
