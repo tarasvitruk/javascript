@@ -2,7 +2,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let tab = document.getElementsByClassName('info-header-tab'),
 			tabContent = document.getElementsByClassName('info-tabcontent'),
-			info = document.getElementsByClassName('info-header')[0];
+			info = document.getElementsByClassName('info-header')[0],
+			aboutUsBtn = document.getElementsByTagName('a')[0],
+			photoBtn = document.getElementsByTagName('a')[1],
+			priceBtn = document.getElementsByTagName('a')[2],
+			contactsBtn = document.getElementsByTagName('a')[3];
 
 	function hideTabContent(a) {
 		for (let i = a; i < tabContent.length; i++) {
@@ -83,6 +87,28 @@ window.addEventListener('DOMContentLoaded', function() {
 		
 	}
 	setClock('timer', deadline);
+
+	// Scroll
+
+	aboutUsBtn.addEventListener('click', (event) => {
+	    event.preventDefault();
+	    window.scrollTo({ top: (document.querySelector(aboutUsBtn.getAttribute('href')).getBoundingClientRect().top - 50), behavior: 'smooth' });
+	});
+
+	photoBtn.addEventListener('click', (event) => {
+	    event.preventDefault();
+	    window.scrollTo({ top: (document.querySelector(photoBtn.getAttribute('href')).getBoundingClientRect().top - 50), behavior: 'smooth' });
+	});
+
+	priceBtn.addEventListener('click', (event) => {
+	    event.preventDefault();
+	    window.scrollTo({ top: (document.querySelector(priceBtn.getAttribute('href')).getBoundingClientRect().top - 50), behavior: 'smooth' });
+	});
+
+	contactsBtn.addEventListener('click', (event) => {
+	    event.preventDefault();
+	    window.scrollTo({ top: document.querySelector(contactsBtn.getAttribute('href')).getBoundingClientRect().top, behavior: 'smooth' });
+	});
 });
 
 
