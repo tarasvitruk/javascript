@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "jest-extended"
+  },
+  "devDependencies": {
+    "jest-extended": "^0.7.2"
+  }
+}
