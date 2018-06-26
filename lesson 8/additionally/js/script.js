@@ -2,11 +2,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let tab = document.getElementsByClassName('info-header-tab'),
 			tabContent = document.getElementsByClassName('info-tabcontent'),
-			info = document.getElementsByClassName('info-header')[0],
-			aboutUsBtn = document.getElementsByTagName('a')[0],
-			photoBtn = document.getElementsByTagName('a')[1],
-			priceBtn = document.getElementsByTagName('a')[2],
-			contactsBtn = document.getElementsByTagName('a')[3];
+			info = document.getElementsByClassName('info-header')[0];
 
 	function hideTabContent(a) {
 		for (let i = a; i < tabContent.length; i++) {
@@ -90,25 +86,31 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	// Scroll
 
-	aboutUsBtn.addEventListener('click', (event) => {
-	    event.preventDefault();
-	    window.scrollTo({ top: (document.querySelector(aboutUsBtn.getAttribute('href')).getBoundingClientRect().top - 50), behavior: 'smooth' });
-	});
+	var linkNav = document.querySelectorAll('[href^="#nav"]'),
+	    V = .3;  // скорость, может иметь дробное значение через точку
+	for (var i = 0; i < linkNav.length; i++) {
+	  linkNav[i].addEventListener('click', function(e) {
+	    e.preventDefault();
+	    var w = window.pageYOffset,  // прокрутка
+	        hash = this.href.replace(/[^#]*(.*)/, '$1');  // id элемента, к которому нужно перейти
+	        t = document.querySelector(hash).getBoundingClientRect().top,  // отступ от окна браузера до id
+	        start = null;
+	    requestAnimationFrame(step);  // подробнее про функцию анимации [developer.mozilla.org]
+	    function step(time) {
+	      if (start === null) start = time;
+	      var progress = time - start,
+	          r = (t < 0 ? Math.max(w - progress/V, w + t) : Math.min(w + progress/V, w + t));
+	      window.scrollTo(0,r);
+	      if (r != w + t) {
+	        requestAnimationFrame(step)
+	      } else {
+	        location.hash = hash  // URL с хэшем
+	      }
+	    }
+	  }, false);
+	}
 
-	photoBtn.addEventListener('click', (event) => {
-	    event.preventDefault();
-	    window.scrollTo({ top: (document.querySelector(photoBtn.getAttribute('href')).getBoundingClientRect().top - 50), behavior: 'smooth' });
-	});
 
-	priceBtn.addEventListener('click', (event) => {
-	    event.preventDefault();
-	    window.scrollTo({ top: (document.querySelector(priceBtn.getAttribute('href')).getBoundingClientRect().top - 50), behavior: 'smooth' });
-	});
-
-	contactsBtn.addEventListener('click', (event) => {
-	    event.preventDefault();
-	    window.scrollTo({ top: document.querySelector(contactsBtn.getAttribute('href')).getBoundingClientRect().top, behavior: 'smooth' });
-	});
 });
 
 
