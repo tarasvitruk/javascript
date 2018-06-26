@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        
+
+        <div class="tabs">
+
+          <ul class="tabs__caption">
+            <li class="active tabs-menu">1-я вкладка</li>
+            <li class="tabs-menu">2-я вкладка</li>
+            <li class="tabs-menu">3-я вкладка</li>
+          </ul>
+
+          <div class="tabs__content active">
+            <div class="galleria">
+                <img src="img/photo1.jpg">
+                <img src="img/photo2.jpg">
+                <img src="img/photo3.jpg">
+            </div>
+          </div>
+
+          <div class="tabs__content">
+            <div class="instructions">Hover to pop</div>
+
+            <canvas></canvas>
+          </div>
+
+          <div class="tabs__content">
+            <div class="container">  
+                <div class="view">0</div>
+            </div>
+          </div>
+
+        </div><!-- .tabs-->
+
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="galleria/galleria-1.5.7.min.js"></script>
+        <script src="js/bubbles.js"></script>
+        <script  src="js/index.js"></script>
+        <script>
+	(function() { 
+            Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+            Galleria.configure({
+                transition: 'fadeslide',
+                imageCrop: true,
+                height: 500,
+                width: 700,
+                autoplay: 3000,
+                lightbox: true
+            });
+            Galleria.run('.galleria');
+        }());
+        </script>
+        <script>
+            (function($) {
+            $(function() {
+
+              $('ul.tabs__caption').on('click', 'li:not(.active)', function() {
+                $(this)
+                  .addClass('active').siblings().removeClass('active')
+                  .closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(this).index()).addClass('active');
+              });
+
+            });
+            })(jQuery);
+        </script>
+    </body>
+</html>
