@@ -35,6 +35,67 @@ window.addEventListener('DOMContentLoaded', function() {
 		popup.style.display = 'none';
 		document.body.style.overflow = '';
 	});
+	// Popup To Show 60sec
+	function popupTime() {
+	  popup.style.display = 'block';
+	}
+	setTimeout(popupTime, 60000);
+
+
+	// popupCalc
+
+	let btnCalc = document.getElementsByClassName('popup_calc_btn'),
+			popupCalc = document.querySelector('.popup_calc'),
+			popupCalcClose = document.querySelector('.popup_calc_close');
+
+	for (let i = 0; i < btnCalc.length; i++) {
+		let btn = btnCalc[i];
+		btn.addEventListener('click', () => {
+			popupCalc.style.display = 'block';
+			document.body.style.overflow = 'hidden';
+		});
+	};
+	
+	popupCalcClose.addEventListener('click', function() {
+		popupCalc.style.display = 'none';
+		document.body.style.overflow = '';
+	});
+
+	// Tabs Calc
+
+	let balconIconsItems = document.getElementsByClassName('balcon_icons-items'),
+			balconBigImages = document.getElementsByClassName('balcon_big-images'),
+			balconIcons = document.getElementsByClassName('balcon_icons')[0];
+
+	function hideBalconTabContent(a) {
+		for (let i = a; i < balconBigImages.length; i++) {
+			balconBigImages[i].classList.remove('show');
+			balconBigImages[i].classList.add('hide');
+			balconIconsItems[i].classList.remove('active-icon');
+		}
+	}
+	hideBalconTabContent(1)
+
+	function showBalconTabContent(b) {
+		if (balconBigImages[b].classList.contains('hide')) {
+			hideBalconTabContent(0);
+			balconBigImages[b].classList.remove('hide');
+			balconBigImages[b].classList.add('show');
+			balconIconsItems[b].classList.add('active-icon');
+		}
+	}
+
+	balconIcons.addEventListener('click', function(event) {
+		let target = event.target;
+		if (target.className == 'balcon_icons-items') {
+			for (let i = 0; i < balconIconsItems.length; i++) {
+				if (target == balconIconsItems[i]) {
+					showBalconTabContent(i);
+					break;
+				}
+			}
+		}
+	});
 
 	// document.onclick = function(ev) {
 	//   let popupEngineer = document.querySelector('.popup_engineer');

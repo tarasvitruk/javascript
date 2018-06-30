@@ -783,12 +783,13 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 .popup_calc_content .big_img img {
-  display: none;
+  /*display: none;*/
+  margin: auto;
   margin-bottom: 3rem;
   width: 30rem;
 }
 .popup_calc_content #type1 {
-  display: inline-block;
+  /*display: inline-block;*/
 }
 .popup_calc_close {
   position: absolute;
@@ -917,6 +918,11 @@ textarea:focus {
           transform: translateX(-50%);
   margin-top: 1rem;
   padding: 1rem 5rem;
+}
+
+.active-icon {
+  opacity: .8;
+  border: 1px solid #ccc;
 }
 
 
@@ -1487,7 +1493,7 @@ textarea:focus {
     width: 25rem;
   }
   .popup_calc_content #type1 {
-    display: inline-block;
+    /*display: inline-block;*/
   }
   .popup_calc_button {
     padding: 1rem 5rem;
