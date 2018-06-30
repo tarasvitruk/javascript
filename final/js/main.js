@@ -15,6 +15,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		popupEngineer.style.display = 'none';
 		document.body.style.overflow = '';
 	});
+	popupEngineer.addEventListener('click', function() {
+		popupEngineer.style.display = 'none';
+	});
 
 
 	// popup
@@ -34,6 +37,9 @@ window.addEventListener('DOMContentLoaded', function() {
 	popupClose.addEventListener('click', function() {
 		popup.style.display = 'none';
 		document.body.style.overflow = '';
+	});
+	popup.addEventListener('click', function() {
+		popup.style.display = 'none';
 	});
 	// Popup To Show 60sec
 	function popupTime() {
@@ -57,6 +63,10 @@ window.addEventListener('DOMContentLoaded', function() {
 	};
 	
 	popupCalcClose.addEventListener('click', function() {
+		popupCalc.style.display = 'none';
+		document.body.style.overflow = '';
+	});
+	popupCalc.addEventListener('click', function() {
 		popupCalc.style.display = 'none';
 		document.body.style.overflow = '';
 	});
