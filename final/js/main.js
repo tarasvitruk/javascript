@@ -255,5 +255,64 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 
+	// Form Ajax
+
+		let message = new Object();
+		message.loading = 'Загрузка...';
+		message.success = 'Спасибо. Скоро мы с вами свяжемся';
+		message.failure = 'Что-то пошло не так...';
+
+		let form = document.querySelectorAll('.form'),
+				input = document.querySelectorAll('.form_input'),
+				statusMessage = document.createElement('div');
+		statusMessage.classList.add('status');
+
+		// Вводим только число
+
+		for (var i = 0; i <= input.length; i++) {
+		  if (i % 2 == 0) {
+		    
+		  } else {
+		  	input[i].addEventListener('keypress', a => {
+		  		if(!/\d/.test(a.key))
+		  			a.preventDefault();
+		  	});
+		  }
+		};
+	  
+
+	  // Перебор всех форм
+		for (let i = 0; i < form.length; i++) {
+	    form[i].addEventListener('submit', function(event) {
+			event.preventDefault();
+			form[i].appendChild(statusMessage);
+
+			// AJAX
+
+			let request = new XMLHttpRequest();
+			request.open('POST', 'server.php');
+			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			let formData = new FormData(form[i]);
+			request.send(formData);
+			request.onreadystatechange = function() {
+				if (request.readyState < 4) {
+					statusMessage.innerHTML = message.loading;
+				} else if (request.readyState === 4) {
+					if (request.status == 200 && request.status < 300) {
+						statusMessage.innerHTML = message.success;
+						// Здесь добавляем контент на страницу
+					}
+					else {
+						statusMessage.innerHTML = message.failure;
+					}
+				}
+			};
+			for (let i = 0; i < input.length; i++) {
+				input[i].value = '';
+				// Очищаем поля ввода
+			}
+		});
+	  };
+
 
 });
