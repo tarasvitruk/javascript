@@ -1,21 +1,22 @@
 window.addEventListener('DOMContentLoaded', function() {
 	
-	// popupEngineer
+	// popupEnginner
 
 	let headerBtn = document.querySelector('.header_btn'),
 			popupEngineer = document.querySelector('.popup_engineer'),
-			popupEnginnerClose = document.querySelector('.popup_engineer_close');
+			popupEngineerClose = document.querySelector('.popup_engineer_close'),
+			popupEngineerShadow = document.querySelector('.popup-engineer-shadow');
 
 	headerBtn.addEventListener('click', function() {
 		popupEngineer.style.display = 'block';
 		document.body.style.overflow = 'hidden';
 	});
 	
-	popupEnginnerClose.addEventListener('click', function() {
+	popupEngineerClose.addEventListener('click', function() {
 		popupEngineer.style.display = 'none';
 		document.body.style.overflow = '';
 	});
-	popupEngineer.addEventListener('click', function() {
+	popupEngineerShadow.addEventListener('click', function() {
 		popupEngineer.style.display = 'none';
 	});
 
@@ -24,7 +25,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let phoneLink = document.getElementsByClassName('phone_link'),
 			popup = document.querySelector('.popup'),
-			popupClose = document.querySelector('.popup_close');
+			popupClose = document.querySelector('.popup_close'),
+			popupShadow = document.querySelector('.popup-shadow');
 
 	for (let i = 0; i < 2; i++) {
 		let btn = phoneLink[i];
@@ -38,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		popup.style.display = 'none';
 		document.body.style.overflow = '';
 	});
-	popup.addEventListener('click', function() {
+	popupShadow.addEventListener('click', function() {
 		popup.style.display = 'none';
 	});
 	// Popup To Show 60sec
@@ -52,7 +54,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let btnCalc = document.getElementsByClassName('popup_calc_btn'),
 			popupCalc = document.querySelector('.popup_calc'),
-			popupCalcClose = document.querySelector('.popup_calc_close');
+			popupCalcClose = document.querySelector('.popup_calc_close'),
+			popupCalcShadow = document.querySelector('.popup-calc-shadow');
+
 
 	for (let i = 0; i < btnCalc.length; i++) {
 		let btn = btnCalc[i];
@@ -66,7 +70,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		popupCalc.style.display = 'none';
 		document.body.style.overflow = '';
 	});
-	popupCalc.addEventListener('click', function() {
+	popupCalcShadow.addEventListener('click', function() {
 		popupCalc.style.display = 'none';
 		document.body.style.overflow = '';
 	});

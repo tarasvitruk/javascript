@@ -735,6 +735,15 @@ textarea:focus {
           transform: translateX(-50%);
   width: 40rem;
   background-color: #ffffff;
+  z-index: 2;
+}
+.popup-shadow {
+  width: 100%;
+  height: 100vh;
+}
+.popup-engineer-shadow {
+  width: 100%;
+  height: 100vh;
 }
 .popup_close,
 .popup_engineer_close,
@@ -763,9 +772,14 @@ textarea:focus {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  width: 40rem;
+  width: 50rem;
   padding: 1rem 0.5rem 4rem;
   background-color: #ffffff;
+  z-index: 2;
+}
+.popup-calc-shadow {
+  width: 100%;
+  height: 100vh;
 }
 .popup_calc_content h2 {
   margin-bottom: 3rem;
@@ -816,7 +830,7 @@ textarea:focus {
   margin: 0 1rem;
 }
 .popup_calc_button {
-  padding: 1rem 5rem;
+  padding: 1rem 7rem;
 }
 .popup_calc_profile {
   display: none;
@@ -921,8 +935,8 @@ textarea:focus {
 }
 
 .active-icon {
-  opacity: .8;
-  border: 1px solid #ccc;
+  zoom: 1.6;
+  /*border: 1px solid #ccc;*/
 }
 
 
@@ -955,7 +969,7 @@ textarea:focus {
 
 
 
-/*Media*/
+/*------------------------------------Media-------------------------------------------*/
 @media (max-width: 1400px) {
   .main {
     background-position: -30rem 0;
@@ -1486,7 +1500,7 @@ textarea:focus {
     margin-bottom: 1rem;
   }
   .popup_calc_content .balcon_icons img {
-    width: 20%;
+    width: 60px;
   }
   .popup_calc_content .big_img img {
     margin-bottom: 2rem;
@@ -1528,6 +1542,9 @@ textarea:focus {
   }
   .popup_calc_profile_button {
     padding: 1rem 5rem;
+  }
+  .active-icon {
+    zoom: 1.3;
   }
 }
 /* small devices, tablets */
