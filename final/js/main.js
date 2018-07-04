@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	for (let i = 0; i < 2; i++) {
 		let btn = phoneLink[i];
-		btn.addEventListener('click', () => {
+		btn.addEventListener('click', function() {
 			popup.style.display = 'block';
 			document.body.style.overflow = 'hidden';
 		});
@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	for (let i = 0; i < btnCalc.length; i++) {
 		let btn = btnCalc[i];
-		btn.addEventListener('click', () => {
+		btn.addEventListener('click', function() {
 			popupCalc.style.display = 'block';
 			document.body.style.overflow = 'hidden';
 		});
@@ -79,7 +79,19 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let balconIconsItems = document.getElementsByClassName('balcon_icons-items'),
 			balconBigImages = document.getElementsByClassName('balcon_big-images'),
-			balconIcons = document.getElementsByClassName('balcon_icons')[0];
+			balconIcons = document.getElementsByClassName('balcon_icons')[0],
+			formParameters = document.querySelectorAll('.form-parameters'),
+			popupCalcButton = document.querySelector('.popup_calc_button'),
+			//popupCalc = document.querySelector('.popup_calc'), Возможно понадобится в модульной системе
+			popupCalcProfile = document.querySelector('.popup_calc_profile'),
+			checkboxCold = document.querySelector('.checkbox-cold'),
+			checkboxWarm = document.querySelector('.checkbox-warm'),
+			popupCalcProfileButton = document.querySelector('.popup_calc_profile_button'),
+			popupCalcEnd = document.querySelector('.popup_calc_end'),
+			popupCalcEndButton = document.querySelector('.popup_calc_end_button'),
+			popupCalcEndClose = document.querySelector('.popup_calc_end_close'),
+			popupCalcProfileClose = document.querySelector('.popup_calc_profile_close'),
+			parametersObj = {};
 
 	function hideBalconTabContent(a) {
 		for (let i = a; i < balconBigImages.length; i++) {
@@ -111,12 +123,72 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 
-	// document.onclick = function(ev) {
-	//   let popupEngineer = document.querySelector('.popup_engineer');
-	//   if (ev.target.id != popupEngineer.id && popupEngineer.style.display == 'block')  {
-	//     popupEngineer.style.display = 'none';
-	//   }
-	// }
+	// Проверка на число
+
+	for (let i = 0; i < 2; i++) {
+	  formParameters[i].addEventListener('keypress', function(b) {
+	  	if(!/\d/.test(b.key))
+	  		b.preventDefault();
+	  });
+	};
+
+	// Popup Profile
+
+	popupCalcButton.addEventListener('click', function() {
+		// Inputs
+		parametersObj.width = width.value;
+		parametersObj.height = height.value;
+		// Очищаем поля ввода
+		width.value = '';
+		height.value = '';
+
+		popupCalc.style.display = 'none';
+		popupCalcProfile.style.display = 'block';
+		document.body.style.overflow = 'hidden';
+		
+	});
+
+	popupCalcProfileClose.addEventListener('click', function() {
+		popupCalcProfile.style.display = 'none';
+		document.body.style.overflow = 'hidden';
+		delete parametersObj.width;
+		delete parametersObj.height;
+		delete parametersObj.parameters;
+	});
+
+	// Popup Calc End
+
+	popupCalcProfileButton.addEventListener('click', function() {
+		// Checkbox
+		if (checkboxCold.checked) {
+			parametersObj.parameters = 'Холодное';
+		} else
+		if (checkboxWarm.checked) {
+			parametersObj.parameters = 'Теплое';
+		}
+
+		popupCalcProfile.style.display = 'none';
+		popupCalcEnd.style.display = 'block';
+		document.body.style.overflow = 'hidden';
+
+	});
+
+	popupCalcEndClose.addEventListener('click', function() {
+		popupCalcEnd.style.display = 'none';
+		document.body.style.overflow = 'hidden';
+		delete parametersObj.width;
+		delete parametersObj.height;
+		delete parametersObj.parameters;
+	});
+
+	popupCalcEndButton.addEventListener('click', function() {
+
+		popupCalcEnd.style.display = 'none';
+		document.body.style.overflow = 'hidden';
+		delete parametersObj.width;
+		delete parametersObj.height;
+		delete parametersObj.parameters;
+	});
 
 	// Timer
 
@@ -255,44 +327,51 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 
-	// Form Ajax
+	// Forms Ajax
 
-		let message = new Object();
-		message.loading = 'Загрузка...';
-		message.success = 'Спасибо. Скоро мы с вами свяжемся';
-		message.failure = 'Что-то пошло не так...';
+	let message = new Object();
+	message.loading = 'Загрузка...';
+	message.success = 'Спасибо. Скоро мы с вами свяжемся';
+	message.failure = 'Что-то пошло не так...';
 
-		let form = document.querySelectorAll('.form'),
-				input = document.querySelectorAll('.form_input'),
-				statusMessage = document.createElement('div');
-		statusMessage.classList.add('status');
+	let form = document.querySelectorAll('.form'),
+			input = document.querySelectorAll('.form_input'),
+			statusMessage = document.createElement('div');
+	statusMessage.classList.add('status');
 
-		// Вводим только число
+	// Вводим только число
 
-		for (var i = 0; i <= input.length; i++) {
-		  if (i % 2 == 0) {
-		    
-		  } else {
-		  	input[i].addEventListener('keypress', a => {
-		  		if(!/\d/.test(a.key))
-		  			a.preventDefault();
-		  	});
-		  }
-		};
-	  
+	for (let i = 0; i <= input.length; i++) {
+	  if (i % 2 == 0) {
+	    
+	  } else {
+	  	input[i].addEventListener('keypress', function(a) {
+	  		if(!/\d/.test(a.key))
+	  			a.preventDefault();
+	  	});
+	  }
+	};
+  
 
-	  // Перебор всех форм
-		for (let i = 0; i < form.length; i++) {
-	    form[i].addEventListener('submit', function(event) {
+  	// Перебор всех форм
+
+	for (let i = 0; i < form.length; i++) {
+    form[i].addEventListener('submit', function(event) {
 			event.preventDefault();
 			form[i].appendChild(statusMessage);
 
-			// AJAX
+				// AJAX
 
 			let request = new XMLHttpRequest();
 			request.open('POST', 'server.php');
 			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			let formData = new FormData(form[i]);
+			// Додаем данные из CalcPopup
+			if (parametersObj != null) {
+				formData.append("Ширина", parametersObj.width);
+				formData.append("Высота", parametersObj.height);
+				formData.append("Тип окна", parametersObj.parameters);
+			}
 			request.send(formData);
 			request.onreadystatechange = function() {
 				if (request.readyState < 4) {
@@ -312,7 +391,49 @@ window.addEventListener('DOMContentLoaded', function() {
 				// Очищаем поля ввода
 			}
 		});
-	  };
+  };
+
+  // Images
+ //  let overlay = document.createElement('div');
+ //  overlay.classList.add('overlayNew');
+ //  let imgSmall = document.querySelectorAll('.img-small');
+ //  for (let i = 0; i < imgSmall.length; i++) {
+ //  	let imgBig = imgSmall[i].cloneNode(false);
+ //  	return
+	// };
+	// imgSmall[i].addEventListener('click', function() {
+
+	// 	overlay.appendChild(imgBig[i]);
+	// 	document.body.appendChild(overlay);
+	// });
+
+	// overlay.addEventListener('click', function() {
+	// 	overlay.style.display = 'none';
+	// });
+
+
+
+	
+	// let overlay = document.createElement('div');
+	// overlay.classList.add('overlayNew');
+	// overlay.appendChild(imgSmall[i]);
+
+	// let node = document.createElement('div');
+	// let textnode = document.createTextNode('Hello');
+	// node.appendChild(textnode);
+	// document.body.appendChild(node);
+
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
