@@ -84,13 +84,16 @@ function popupCalc() {
 		}
 	});
 
-	popupCalcClose.addEventListener('click', function () {
+	function popupCalcFun() {
 		popupCalc.style.display = 'none';
 		document.body.style.overflow = '';
+	}
+
+	popupCalcClose.addEventListener('click', function () {
+		popupCalcFun();
 	});
 	popupCalcShadow.addEventListener('click', function () {
-		popupCalc.style.display = 'none';
-		document.body.style.overflow = '';
+		popupCalcFun();
 	});
 }
 module.exports = popupCalc;
@@ -202,7 +205,7 @@ function tabsCalc() {
 	    popupCalcButton = document.querySelector('.popup_calc_button'),
 	    popupCalc = document.querySelector('.popup_calc'),
 	    //Возможно понадобится в модульной системе
-	popupCalcProfile = document.querySelector('.popup_calc_profile'),
+			popupCalcProfile = document.querySelector('.popup_calc_profile'),
 	    checkboxCold = document.querySelector('.checkbox-cold'),
 	    checkboxWarm = document.querySelector('.checkbox-warm'),
 	    popupCalcProfileButton = document.querySelector('.popup_calc_profile_button'),
@@ -253,56 +256,63 @@ function tabsCalc() {
 	// Popup Profile
 
 	popupCalcButton.addEventListener('click', function () {
-		// Inputs
-		parametersObj.width = width.value;
-		parametersObj.height = height.value;
-		// Очищаем поля ввода
-		width.value = '';
-		height.value = '';
+		if (width.value == null || width.value == '' && height.value == null || height.value == '') {
+			alert('Введите размеры окна!');
+		} else {
+			// Inputs
+			parametersObj.width = width.value;
+			parametersObj.height = height.value;
+			// Очищаем поля ввода
+			width.value = '';
+			height.value = '';
 
-		popupCalc.style.display = 'none';
-		popupCalcProfile.style.display = 'block';
-		document.body.style.overflow = 'hidden';
+			popupCalc.style.display = 'none';
+			popupCalcProfile.style.display = 'block';
+			document.body.style.overflow = 'hidden';
+			console.log(height.value);
+		}
 	});
 
-	popupCalcProfileClose.addEventListener('click', function () {
-		popupCalcProfile.style.display = 'none';
+	function deleteObj() {
 		document.body.style.overflow = 'hidden';
 		delete parametersObj.width;
 		delete parametersObj.height;
 		delete parametersObj.parameters;
+	}
+
+	popupCalcProfileClose.addEventListener('click', function () {
+		popupCalcProfile.style.display = 'none';
+		deleteObj();
 	});
 
 	// Popup Calc End
 
 	popupCalcProfileButton.addEventListener('click', function () {
-		// Checkbox
-		if (checkboxCold.checked) {
-			parametersObj.parameters = 'Холодное';
-		} else if (checkboxWarm.checked) {
-			parametersObj.parameters = 'Теплое';
-		}
+		if (checkboxCold.checked || checkboxWarm.checked) {
+			// Checkbox
+			if (checkboxCold.checked) {
+				parametersObj.parameters = 'Холодное';
+			} else if (checkboxWarm.checked) {
+				parametersObj.parameters = 'Теплое';
+			}
 
-		popupCalcProfile.style.display = 'none';
-		popupCalcEnd.style.display = 'block';
-		document.body.style.overflow = 'hidden';
+			popupCalcProfile.style.display = 'none';
+			popupCalcEnd.style.display = 'block';
+			document.body.style.overflow = 'hidden';
+		} else {
+			alert('Выберите тип окна!');
+		}
 	});
 
 	popupCalcEndClose.addEventListener('click', function () {
 		popupCalcEnd.style.display = 'none';
-		document.body.style.overflow = 'hidden';
-		delete parametersObj.width;
-		delete parametersObj.height;
-		delete parametersObj.parameters;
+		deleteObj();
 	});
 
 	popupCalcEndButton.addEventListener('click', function () {
 
 		popupCalcEnd.style.display = 'none';
-		document.body.style.overflow = 'hidden';
-		delete parametersObj.width;
-		delete parametersObj.height;
-		delete parametersObj.parameters;
+		deleteObj();
 	});
 
 	//Ajax

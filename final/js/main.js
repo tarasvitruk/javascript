@@ -69,14 +69,17 @@
 		    	return 0;
 		  }
 		});
+
+		function popupCalcFun() {
+			popupCalc.style.display = 'none';
+			document.body.style.overflow = '';
+		}
 		
 		popupCalcClose.addEventListener('click', function() {
-			popupCalc.style.display = 'none';
-			document.body.style.overflow = '';
+			popupCalcFun();
 		});
 		popupCalcShadow.addEventListener('click', function() {
-			popupCalc.style.display = 'none';
-			document.body.style.overflow = '';
+			popupCalcFun();
 		});
 		
 		// Tabs Calc
@@ -138,60 +141,64 @@
 
 		// Popup Profile
 
-		popupCalcButton.addEventListener('click', function() {
-			// Inputs
-			parametersObj.width = width.value;
-			parametersObj.height = height.value;
-			// Очищаем поля ввода
-			width.value = '';
-			height.value = '';
+		popupCalcButton.addEventListener('click', function () {
+			if (width.value == null || width.value == '' && height.value == null || height.value == '') {
+				alert('Введите размеры окна!');
+			} else {
+				// Inputs
+				parametersObj.width = width.value;
+				parametersObj.height = height.value;
+				// Очищаем поля ввода
+				width.value = '';
+				height.value = '';
 
-			popupCalc.style.display = 'none';
-			popupCalcProfile.style.display = 'block';
-			document.body.style.overflow = 'hidden';
-			
+				popupCalc.style.display = 'none';
+				popupCalcProfile.style.display = 'block';
+				document.body.style.overflow = 'hidden';
+				console.log(height.value);
+			}
 		});
 
-		popupCalcProfileClose.addEventListener('click', function() {
-			popupCalcProfile.style.display = 'none';
+		function deleteObj() {
 			document.body.style.overflow = 'hidden';
 			delete parametersObj.width;
 			delete parametersObj.height;
 			delete parametersObj.parameters;
+		}
+
+		popupCalcProfileClose.addEventListener('click', function() {
+			popupCalcProfile.style.display = 'none';
+			deleteObj();
 		});
 
 		// Popup Calc End
 
-		popupCalcProfileButton.addEventListener('click', function() {
-			// Checkbox
-			if (checkboxCold.checked) {
-				parametersObj.parameters = 'Холодное';
-			} else
-			if (checkboxWarm.checked) {
-				parametersObj.parameters = 'Теплое';
+		popupCalcProfileButton.addEventListener('click', function () {
+			if (checkboxCold.checked || checkboxWarm.checked) {
+				// Checkbox
+				if (checkboxCold.checked) {
+					parametersObj.parameters = 'Холодное';
+				} else if (checkboxWarm.checked) {
+					parametersObj.parameters = 'Теплое';
+				}
+
+				popupCalcProfile.style.display = 'none';
+				popupCalcEnd.style.display = 'block';
+				document.body.style.overflow = 'hidden';
+			} else {
+				alert('Выберите тип окна!');
 			}
-
-			popupCalcProfile.style.display = 'none';
-			popupCalcEnd.style.display = 'block';
-			document.body.style.overflow = 'hidden';
-
 		});
 
 		popupCalcEndClose.addEventListener('click', function() {
 			popupCalcEnd.style.display = 'none';
-			document.body.style.overflow = 'hidden';
-			delete parametersObj.width;
-			delete parametersObj.height;
-			delete parametersObj.parameters;
+			deleteObj();
 		});
 
 		popupCalcEndButton.addEventListener('click', function() {
 
 			popupCalcEnd.style.display = 'none';
-			document.body.style.overflow = 'hidden';
-			delete parametersObj.width;
-			delete parametersObj.height;
-			delete parametersObj.parameters;
+			deleteObj();
 		});
 
 		// Timer
